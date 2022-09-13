@@ -1,12 +1,10 @@
 # Minimal makefile for Sphinx documentation
 #
 
-export SPHINXWORKING=True
-
 # You can set these variables from the command line.
-SPHINXOPTS    = -j auto
+SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = sabueso
+SPHINXPROJ    = test_uibcdf_library
 SOURCEDIR     = .
 BUILDDIR      = _build
 
@@ -20,3 +18,4 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+

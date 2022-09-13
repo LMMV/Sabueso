@@ -20,21 +20,20 @@ import sys
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-import sabueso 
+import sabueso
 
 # -- Project information -----------------------------------------------------
 
 project = 'Sabueso'
-copyright = ("2022, UIBCDF Lab at the Mexico City Childrens Hospital Federico Gomez and authors."
-             "Computational Molecular Science Python Cookiecutter version 1.5")
-author = 'UIBCDF Lab'
+copyright = ('2022, UIBCDF Lab at the Mexico City Childrens Hospital Federico Gomez and authors.'
+        'Project structure based on the Computational Molecular Science Python Cookiecutter version 1.5')
+author = 'Liliana M. Moreno Vargas & Diego Prada Gracia'
 
 # The short X.Y version
 version = sabueso.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags
 release = sabueso.__version__
 
-print(f'version {version}, release {release}')
 
 # -- General configuration ---------------------------------------------------
 
@@ -46,8 +45,8 @@ print(f'version {version}, release {release}')
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
+    'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
     'sphinx.ext.todo',
@@ -57,15 +56,26 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinxcontrib.bibtex',
     'sphinx.ext.extlinks',
-    'sphinx_remove_toctrees',
-    'sphinx_copybutton',
-    'myst_nb'
+    'myst_nb',
 ]
 
 autosummary_generate = True
+
+# Napoleon settings
+napoleon_numpy_docstring = True
 napoleon_google_docstring = False
-napoleon_use_param = False
-napoleon_use_ivar = True
+napoleon_include_init_with_doc = False
+napoleon_include_private_with_doc = False
+napoleon_include_special_with_doc = True
+napoleon_use_admonition_for_examples = False
+napoleon_use_admonition_for_notes = True
+napoleon_use_admonition_for_references = False
+napoleon_use_ivar = False
+napoleon_use_param = True
+napoleon_use_rtype = True
+napoleon_preprocess_types = False
+napoleon_type_aliases = None
+napoleon_attr_annotations = True
 
 # sphinxcontrib-bibtex
 bibtex_bibfiles = ['bibliography.bib'] # list of *.bib files
@@ -81,7 +91,7 @@ templates_path = ['_templates']
 source_parsers={
 }
 
-source_suffix = ['.rst', '.md', '.ipynb']
+source_suffix = ['.rst', '.md']
 
 # The master toctree document.
 master_doc = 'index'
@@ -92,24 +102,16 @@ master_doc = 'index'
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
 # language was edited to use sphinx-intl
-language = 'en'
-# These next two variables were incluede to use sphinx-intl
-locale_dirs =  ['_locale/']
-gettext_compact = False
+language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**.ipynb_checkpoints', 'old_api', 'freezer']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**.ipynb_checkpoints']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'default'
 
-# Remove from toctrees
-remove_from_toctrees = []
-for directory in os.walk('api'):
-    if directory[0].endswith('/autosummary'):
-        remove_from_toctrees.append(directory[0]+'/*')
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -132,23 +134,19 @@ html_theme_options = {
     'style_external_links': False,
     # Toc options
     'collapse_navigation': False,
-    'sticky_navigation': False,
-    'navigation_depth': 4,
+    'sticky_navigation': True,
+    'navigation_depth': 3,
     'includehidden': True,
-    'titles_only': True
+    'titles_only': False
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = []
+#html_theme_path = []
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
-#### I should check
-#### https://github.com/lotharschulz/sphinx-pages/blob/master/conf.py for more
-#### options
 
 # Custom css
 
@@ -167,8 +165,6 @@ html_css_files = [
 # html_sidebars = {}
 
 html_show_sourcelink = False
-
-
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
